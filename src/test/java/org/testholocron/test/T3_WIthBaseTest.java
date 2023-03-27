@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
  * Refactoring. Move setup class into a different class and have individual test inherit from basetest class
  */
 @Test(testName = "Finviz Test With Base Class", description = "Introduce Base class and have test class inherit from it")
-public class T3_WIthBaseClassTest extends BaseSelenium {
+public class T3_WIthBaseTest extends BaseSelenium {
 
     @Test(priority =2)
     public void finFizTest() throws InterruptedException {

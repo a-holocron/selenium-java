@@ -1,9 +1,13 @@
 package org.testholocron.pages;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class FinVizPage {
 
@@ -18,6 +22,9 @@ public class FinVizPage {
     WebElement marketCap;
     @FindBy(xpath = "//a[@class='screener-link-primary']")
     WebElement detailQuote;
+    @FindBy(id = "fs_exch")
+    WebElement exchangesDropdown;
+    
     public FinVizPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
@@ -43,5 +50,17 @@ public class FinVizPage {
     }
     public void openDetailedQuote(){
         detailQuote.click();
+    }
+    
+	public List<String> getEchangesDropdownItemList() {
+    	List<String> dropDownList = new ArrayList<String>();
+    	Select s = new Select(exchangesDropdown);
+    	List<WebElement> items = s.getOptions();
+    	for (WebElement item: items) {
+    		dropDownList.add(item.getText());
+    	}
+    	
+    	return dropDownList;
+    	
     }
 }
